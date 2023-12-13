@@ -1,0 +1,53 @@
+body {
+    margin: 0px;
+}
+
+#header {
+    font-size: 80px;
+    text-align: center;
+    font-weight: 600;
+    margin: 30px;
+}
+
+.gameboard {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background-color: blanchedalmond;
+    gap: 40px;
+
+}
+
+.rock, .paper, .scissors {
+    
+    padding: 60px 100px;
+    border-style: solid;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color:darkslategray;
+    font-size: 60px;
+    color:rgb(145, 47, 109);
+    font-weight: bolder;
+    background-color:rgba(0, 255, 255, 0.25);
+    flex: 1 1 0;
+    
+}
+
+.button:hover {
+    background-color: black;
+    transition-duration: 1s;
+}
+
+#scoreheader {
+    text-align: center;
+    font-size: 30px;
+}
+
+#scoretable {
+    display: flex;
+    justify-content: space-around;
+}
+
+#scoretable > p {
+    font-weight: bold;
+}
