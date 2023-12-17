@@ -16,17 +16,17 @@ function playRound(playerSelection, computerSelection) {
     const computerscore = document.querySelector('#computerscore')
 
     if (playerSelection === 'rock' && computerSelection === 'paper') {
-        midtext.textContent = 'You lose! Paper beats Rock.'
+        midtext.textContent = 'You lose the round! Paper beats Rock.'
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        midtext.textContent = 'You lose! Rock beats Scissors.';
+        midtext.textContent = 'You lose the round! Rock beats Scissors.';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        midtext.textContent = 'You lose! Scissors beats Paper.';
+        midtext.textContent = 'You lose the round! Scissors beats Paper.';
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        midtext.textContent = 'You win! Rock beats Scissors.';
+        midtext.textContent = 'You win the round! Rock beats Scissors.';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        midtext.textContent = 'You win! Scissors beats Paper.';
+        midtext.textContent = 'You win the round! Scissors beats Paper.';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        midtext.textContent = 'You win! Paper beats Rock.';
+        midtext.textContent = 'You win the round! Paper beats Rock.';
     } else if (playerSelection === computerSelection) {
         midtext.textContent =  "It's a tie! Take another round.";
     }
@@ -45,8 +45,11 @@ function playRound(playerSelection, computerSelection) {
 
     if (checkScore(playerpoints, computerpoints)) {
         buttons.forEach((button) => {
-            button.removeEventListener('click', startGame) }
-        )}
+            button.disabled = true;
+        });
+    
+        startOver()
+    }
 }
 
 function checkScore(playerpoints, computerpoints) {
@@ -57,69 +60,47 @@ function checkScore(playerpoints, computerpoints) {
         return true;
     } else if (computerscore.textContent === '5') {
         final.textContent = 'YOU LOST THE GAME. GAME OVER.';
+        final.setAttribute('style', 'background-color: red;')
         return true;
     }
 
     return false;
-
 }
 
-function game() {
-    let playerwins = 0;
-    let computerwins = 0;
+function startOver() {
 
-    let result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result.slice(4,6) === 'wi') {
-        playerwins++
-    } else if (result.slice(4,6) === 'lo') {
-        computerwins++
-    }
-    
-    result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result.slice(4,6) === 'wi') {
-        playerwins++
-    } else if (result.slice(4,6) === 'lo') {
-        computerwins++
-    }
-    
+    const ask = document.querySelector('#ask')
+    ask.textContent ='Play again?'
 
-    result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result.slice(4,6) === 'wi') {
-        playerwins++
-    } else if (result.slice(4,6) === 'lo') {
-        computerwins++
-    }
-    
-    result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result.slice(4,6) === 'wi') {
-        playerwins++
-    } else if (result.slice(4,6) === 'lo') {
-        computerwins++
-    }
-    
-    result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result.slice(4,6) === 'wi') {
-        playerwins++
-    } else if (result.slice(4,6) === 'lo') {
-        computerwins++
-    }
-    
-    if (playerwins > computerwins) {
-        alert('You won the whole game!')
-    } else if (playerwins < computerwins) {
-        alert('You lost the game!')
-    } else alert("It's a tie in the end or you didn't play. Play again!")
+    const answers = document.querySelector('#answers')
+    const yes = document.createElement('button');
+    const no = document.createElement('button');
+    answers.append(yes, no);
 
-}
+    yes.setAttribute('style', 'padding: 20px 50px;')
+    no.setAttribute('style', 'padding: 20px 50px;')
+    yes.textContent = 'Yes'
+    no.textContent = 'No'
+
+    yes.addEventListener('click', () => {
+        location.reload();
+    });
+
+    no.addEventListener('click', () => {
+        window.close();
+    });
+
+};
 
 function startGame() {
+    
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             let choice = button.className.split(' ')[0];
             playRound(choice, getComputerChoice());
         });
     });
-}
+};
 
 const buttons = document.querySelectorAll('button');
 

@@ -3,7 +3,7 @@ body {
 }
 
 #header {
-    font-size: 80px;
+    font-size: 50px;
     text-align: center;
     font-weight: 600;
     margin: 30px;
@@ -12,10 +12,9 @@ body {
 .gameboard {
     display: flex;
     justify-content: space-around;
-    padding: 50px;
+    padding: 30px 100px;
     background-color: blanchedalmond;
     gap: 40px;
-
 }
 
 .rock, .paper, .scissors {
@@ -41,6 +40,8 @@ body {
 #scoreheader {
     text-align: center;
     font-size: 30px;
+    font-weight: 900;
+    margin: 20px;
 }
 
 #scoretable {
@@ -50,4 +51,30 @@ body {
 
 #scoretable > p {
     font-weight: bold;
+}
+
+#player, #computer {
+    text-align: center;
+}
+
+#midtext {
+    text-align: center;
+}
+
+#final {
+    text-align: center;
+    background-color: greenyellow;
+    font-weight: bolder;
+    font-size: large;
+}
+
+#ask {
+    text-align: center;
+    font-weight: bolder;
+}
+
+#answers {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
 }
