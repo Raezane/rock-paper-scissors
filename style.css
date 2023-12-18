@@ -15,6 +15,7 @@ body {
     padding: 30px 100px;
     background-color: blanchedalmond;
     gap: 40px;
+    flex-wrap: wrap
 }
 
 .rock, .paper, .scissors {
